@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="package" version="3.0" method="upgrade">
+    <name>ScoutOrg Numbers</name>
+    <author>Alexander Krantz</author>
+    <creationDate>[[current_date]]</creationDate>
+    <packagename>scoutorg</packagename>
+    <version>1.0.0</version>
+    <url>https://github.com/scouternasetjanster/ScoutOrg</url>
+    <description>ScoutOrg package containing library and plugin</description>
+    <updateservers>
+        <server type="extension" priority="1" name="ScoutOrg Updates">https://raw.githubusercontent.com/scouternasetjanster/ScoutOrg/master/src/joomla/package/update.xml</server>
+    </updateservers>
+    <files folder="packages">
+        <file type="library" id="scoutorg">[[library_filename]]</file>
+        <file type="component" id="com_scoutorg">[[component_filename]]</file>
+    </files>
+</extension>

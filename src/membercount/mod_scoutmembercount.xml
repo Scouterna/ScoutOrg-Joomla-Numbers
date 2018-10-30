@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="module" version="3" client="site" method="upgrade">
+    <name>Hello, World!</name>
+    <element>mod_scoutmembercount</element>
+    <author>Alexander Krantz</author>
+    <version>0.0.1</version>
+    <description>MOD_SCOUTMEMBERCOUNT_DESCRIPTION</description>
+    <languages folder="language">
+        <language tag="en-GB">en-GB.mod_scoutmembercount.ini</language>
+        <language tag="en-GB">en-GB.mod_scoutmembercount.sys.ini</language>
+        <language tag="sv-SE">sv-SE.mod_scoutmembercount.ini</language>
+        <language tag="sv-SE">sv-SE.mod_scoutmembercount.sys.ini</language>
+    </languages>
+    <files>
+        <filename>mod_waitingcount.xml</filename>
+        <filename module="mod_waitingcount">mod_waitingcount.php</filename>
+        <filename>helper.php</filename>
+        <filename>tmpl/default.php</filename>
+    </files>
+    <config>
+        <fields name="params">
+            <fieldset name="basic">
+                <field
+                    name="newRegisteredInterval"
+                    type="number"
+                    label="MOD_SCOUTWAITINGCOUNT_NEWREGISTEREDINTERVAL_LABEL"
+                    description="MOD_SCOUTWAITINGCOUNT_NEWREGISTEREDINTERVAL_DESC"
+                    default="30"
+                />
+                <field
+                    name="showNewRegistered"
+                    type="checkbox"
+                    label="MOD_SCOUTWAITINGCOUNT_SHOWNEWREGISTERED_LABEL"
+                    description="MOD_SCOUTWAITINGCOUNT_SHOWNEWREGISTERED_DESC"
+                    default="0"
+                />
+            </fieldset>
+        </fields>
+    </config>
+</extension>
