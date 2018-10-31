@@ -3,17 +3,16 @@
     <name>ScoutOrg Waiting Count</name>
     <element>mod_scoutwaitingcount</element>
     <author>Alexander Krantz</author>
+    <creationDate>[[current_date]]</creationDate>
     <version>0.0.1</version>
     <description>MOD_SCOUTWAITINGCOUNT_DESCRIPTION</description>
     <languages folder="language">
         <language tag="en-GB">en-GB.mod_scoutwaitingcount.ini</language>
-        <language tag="en-GB">en-GB.mod_scoutwaitingcount.sys.ini</language>
         <language tag="sv-SE">sv-SE.mod_scoutwaitingcount.ini</language>
-        <language tag="sv-SE">sv-SE.mod_scoutwaitingcount.sys.ini</language>
     </languages>
     <files>
         <filename>mod_scoutwaitingcount.xml</filename>
-        <filename module="mod_waitingcount">mod_scoutwaitingcount.php</filename>
+        <filename module="mod_scoutwaitingcount">mod_scoutwaitingcount.php</filename>
         <filename>helper.php</filename>
         <filename>tmpl/default.php</filename>
     </files>
@@ -21,11 +20,18 @@
         <fields name="params">
             <fieldset name="basic">
                 <field
-                    name="newRegisteredInterval"
-                    type="number"
-                    label="MOD_SCOUTWAITINGCOUNT_NEWREGISTEREDINTERVAL_LABEL"
-                    description="MOD_SCOUTWAITINGCOUNT_NEWREGISTEREDINTERVAL_DESC"
-                    default="30"
+                    name="showOverview"
+                    type="checkbox"
+                    label="MOD_SCOUTWAITINGCOUNT_SHOWOVERVIEW_LABEL"
+                    description="MOD_SCOUTWAITINGCOUNT_SHOWOVERVIEW_DESC"
+                    default="1"
+                />
+                <field
+                    name="showTable"
+                    type="checkbox"
+                    label="MOD_SCOUTWAITINGCOUNT_SHOWTABLE_LABEL"
+                    description="MOD_SCOUTWAITINGCOUNT_SHOWTABLE_DESC"
+                    default="0"
                 />
                 <field
                     name="showNewRegistered"
@@ -33,6 +39,13 @@
                     label="MOD_SCOUTWAITINGCOUNT_SHOWNEWREGISTERED_LABEL"
                     description="MOD_SCOUTWAITINGCOUNT_SHOWNEWREGISTERED_DESC"
                     default="0"
+                />
+                <field
+                    name="newRegisteredInterval"
+                    type="number"
+                    label="MOD_SCOUTWAITINGCOUNT_NEWREGISTEREDINTERVAL_LABEL"
+                    description="MOD_SCOUTWAITINGCOUNT_NEWREGISTEREDINTERVAL_DESC"
+                    default="30"
                 />
             </fieldset>
         </fields>

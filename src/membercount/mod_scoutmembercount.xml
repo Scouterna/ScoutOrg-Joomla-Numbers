@@ -3,13 +3,12 @@
     <name>ScoutOrg Member Count</name>
     <element>mod_scoutmembercount</element>
     <author>Alexander Krantz</author>
+    <creationDate>[[current_date]]</creationDate>
     <version>0.0.1</version>
     <description>MOD_SCOUTMEMBERCOUNT_DESCRIPTION</description>
     <languages folder="language">
         <language tag="en-GB">en-GB.mod_scoutmembercount.ini</language>
-        <language tag="en-GB">en-GB.mod_scoutmembercount.sys.ini</language>
         <language tag="sv-SE">sv-SE.mod_scoutmembercount.ini</language>
-        <language tag="sv-SE">sv-SE.mod_scoutmembercount.sys.ini</language>
     </languages>
     <files>
         <filename>mod_scoutmembercount.xml</filename>
@@ -21,18 +20,32 @@
         <fields name="params">
             <fieldset name="basic">
                 <field
-                    name="newRegisteredInterval"
-                    type="number"
-                    label="MOD_SCOUTMEMBERCOUNT_NEWREGISTEREDINTERVAL_LABEL"
-                    description="MOD_SCOUTMEMBERCOUNT_NEWREGISTEREDINTERVAL_DESC"
-                    default="30"
+                    name="showOverview"
+                    type="checkbox"
+                    label="MOD_SCOUTMEMBERCOUNT_SHOWOVERVIEW_LABEL"
+                    description="MOD_SCOUTMEMBERCOUNT_SHOWOVERVIEW_DESC"
+                    default="1"
                 />
                 <field
-                    name="showNewRegistered"
+                    name="showScoutTable"
+                    type="checkbox"
+                    label="MOD_SCOUTMEMBERCOUNT_SHOWSCOUTTABLE_LABEL"
+                    description="MOD_SCOUTMEMBERCOUNT_SHOWSCOUTTABLE_DESC"
+                    default="0"
+                />
+                <field
+                    name="showNewMembers"
                     type="checkbox"
                     label="MOD_SCOUTMEMBERCOUNT_SHOWNEWREGISTERED_LABEL"
                     description="MOD_SCOUTMEMBERCOUNT_SHOWNEWREGISTERED_DESC"
                     default="0"
+                />
+                <field
+                    name="newMembersInterval"
+                    type="number"
+                    label="MOD_SCOUTMEMBERCOUNT_NEWREGISTEREDINTERVAL_LABEL"
+                    description="MOD_SCOUTMEMBERCOUNT_NEWREGISTEREDINTERVAL_DESC"
+                    default="30"
                 />
             </fieldset>
         </fields>

@@ -17,8 +17,56 @@ class ModScoutWaitingCountHelper {
         $this->params = $params;
     }
     
+    public function getShowOverview() {
+        return boolval($this->params->get('showOverview'));
+    }
+
     public function getTotalCount() {
         return count($this->scoutOrg->getWaitingList());
+    }
+
+    public function getShowTable() {
+        return boolval($this->params->get('showTable'));
+    }
+
+    public function getStats() {
+        // August - 7 = January (8 - 7 = 1), August = first month, July = last month
+        $currentYear = intval((new \DateTime())->sub(new \DateInterval('P7M'))->format('Y'));
+        $oldestYear = $currentYear - 17;
+
+        $stats = [];
+        foreach (range($oldestYear, $currentYear) as $year) {
+            $currentStats = (object)[
+                'year' => $year,
+                'scouts' => 0,
+                'leaders' => 0,
+                'color' => '',
+            ];
+            if ($year < $oldestYear + 3) {
+                $currentStats->color = '#eC0e6e';
+            } else if ($year < $oldestYear + 6) {
+                $currentStats->color = '#e55300';
+            } else if ($year < $oldestYear + 8) {
+                $currentStats->color = '#00a2e1';
+            } else if ($year < $oldestYear + 10) {
+                $currentStats->color = '#12ad2b';
+            } else {
+                $currentStats->color = '#111111';
+            }
+            foreach ($this->scoutOrg->getWaitingList() as $waitingMember) {
+                $dateOfBirth = new DateTime($waitingMember->getPersonInfo()->getDateOfBirth());
+                $yearOfBirth = intval($dateOfBirth->format('Y'));
+                if ($yearOfBirth == $year) {
+                    $currentStats->scouts++;
+                    if ($waitingMember->hasLeaderInterest()) {
+                        $currentStats->leaders++;
+                    }
+                }
+            }
+            $stats[] = $currentStats;
+        }
+
+        return $stats;
     }
 
     public function getShowNewRegistered() {
@@ -40,45 +88,5 @@ class ModScoutWaitingCountHelper {
             }
         }
         return $amountNewRegistered;
-    }
-
-    public static function getStats() {
-        // August - 7 = January (8 - 7 = 1), August = first month, July = last month
-        $currentYear = intval((new \DateTime())->sub(new \DateInterval('P7M'))->format('Y'));
-        $oldestYear = $currentYear - 17;
-
-        $stats = [];
-        foreach (range($oldestYear, $currentYear) as $year) {
-            $currentStats = (object)[
-                'year' => $year,
-                'scouts' => 0,
-                'leaders' => 0,
-                'color' => '',
-            ];
-            foreach ($this->scoutOrg->getWaitingList() as $waitingMember) {
-                $dateOfBirth = new DateTime($waitingMember->getPersonInfo()->getDateOfBirth());
-                $yearOfBirth = intval($dateOfBirth->format('Y'));
-                if ($yearOfBirth == $year) {
-                    $currentStats->scouts++;
-                    if ($waitingMember->hasLeaderInterest()) {
-                        $currentStats->leaders++;
-                    }
-                }
-                if ($yearOfBirth < $oldestYear + 3) {
-                    $currentStats->color = '#eC0e6e';
-                } else if ($yearOfBirth < $oldestYear + 6) {
-                    $currentStats->color = '#e55300';
-                } else if ($yearOfBirth < $oldestYear + 8) {
-                    $currentStats->color = '#00a2e1';
-                } else if ($yearOfBirth < $oldestYear + 10) {
-                    $currentStats->color = '#12ad2b';
-                } else {
-                    $currentStats->color = '#111111';
-                }
-            }
-            $stats[] = $currentStats;
-        }
-
-        return $stats;
     }
 }

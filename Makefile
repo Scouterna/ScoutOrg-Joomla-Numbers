@@ -26,7 +26,7 @@ clean:
 	@rm -rf build
 
 $(package_target): $(membercount_target) $(waitingcount_target) $(package_source)
-	@echo Creating joomla package
+	@echo Creating package
 	@rm -rf $(package_tmp)
 	@mkdir -p $(package_tmp)
 	@mkdir $(package_tmp)/packages
@@ -40,7 +40,7 @@ $(package_target): $(membercount_target) $(waitingcount_target) $(package_source
 		zip -FSr ../../$(package_name) ./
 
 $(waitingcount_target): $(waitingcount_source)
-	@echo Creating joomla component
+	@echo Creating waitingcount
 	@rm -rf $(waitingcount_tmp)
 	@mkdir -p $(waitingcount_tmp)
 	@cp -r src/waitingcount/* $(waitingcount_tmp)
@@ -49,7 +49,7 @@ $(waitingcount_target): $(waitingcount_source)
 		zip -FSr ../$(waitingcount_name) ./
 
 $(membercount_target): $(membercount_source) $(membercount_source)
-	@echo Creating joomla library
+	@echo Creating membercount
 	@rm -rf $(membercount_tmp)
 	@mkdir -p $(membercount_tmp)
 	@cp -r src/membercount/* $(membercount_tmp)

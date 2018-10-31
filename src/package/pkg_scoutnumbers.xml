@@ -3,7 +3,7 @@
     <name>ScoutOrg Numbers</name>
     <author>Alexander Krantz</author>
     <creationDate>[[current_date]]</creationDate>
-    <packagename>scoutorg_numbers</packagename>
+    <packagename>scoutnumbers</packagename>
     <version>1.0.0</version>
     <url>https://github.com/scouternasetjanster/ScoutOrg</url>
     <description>ScoutOrg package containing library and plugin</description>

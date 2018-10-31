@@ -2,31 +2,35 @@
 
 defined('_JEXEC') or die; ?>
 
-<?php if ($showNewRegistered) : ?>
-    <p>
-        <?= $newRegisteredCount ?> nya intresseanmälningar de senaste <?= $newRegisteredInterval ?> dagarna.
-    </p>
-<? endif; ?>
+<?php if ($helper->getShowOverview()) : ?>
+    <h1>
+        <center>
+            <?= $helper->getTotalCount() ?> i kö.
+        </center>
+    </h1>
+<?php endif; ?>
 
-<h1>
+<?php if ($helper->getShowTable()) : ?>
+    Antal scouter, antal föräldrar
     <center>
-        <?= $totalCount ?> i kö.
+        <table>
+            <?php foreach ($helper->getStats() as $yearStat) : ?>
+                <tr>
+                    <td><?= $yearStat->year ?></td>
+                    <td><?= $yearStat->scouts ?></td>
+                    <td><?= $yearStat->leaders ?></td>
+                    <td>
+                        <div style="height:16px;width:<?= $yearStat->scouts ?>px;
+                            background-color:<?= $yearStat->color ?>;"></div>
+                    </td>
+                </tr>
+            <?php endforeach; ?>
+        </table>
     </center>
-</h1>
+<?php endif; ?>
 
-Antal scouter, antal föräldrar
-<center>
-    <table>
-        <?php foreach ($stats as $yearStat) : ?>
-            <tr>
-                <td><?= $yearStat->year ?></td>
-                <td><?= $yearStat->scouts ?></td>
-                <td><?= $yearStat->leaders ?></td>
-                <td>
-                    <div height='16px' width='<?= $yearStat->scouts ?>px'
-                        style='background-color:<?= $yearStat->color ?>'></div>
-                </td>
-            </tr>
-        <?php endforeach; ?>
-    </table>
-</center>
+<?php if ($helper->getShowNewRegistered()) : ?>
+    <p>
+        <?= $helper->getNewRegisteredCount() ?> nya intresseanmälningar de senaste <?= $helper->getNewRegisteredInterval() ?> dagarna.
+    </p>
+<?php endif; ?>
