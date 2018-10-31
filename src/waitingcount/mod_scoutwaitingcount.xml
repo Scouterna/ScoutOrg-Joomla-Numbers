@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension type="module" version="3" client="site" method="upgrade">
-    <name>Hello, World!</name>
+    <name>ScoutOrg Waiting Count</name>
     <element>mod_scoutwaitingcount</element>
     <author>Alexander Krantz</author>
     <version>0.0.1</version>
