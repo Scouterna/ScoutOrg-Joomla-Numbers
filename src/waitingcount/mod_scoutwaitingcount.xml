@@ -4,7 +4,7 @@
     <element>mod_scoutwaitingcount</element>
     <author>Alexander Krantz</author>
     <creationDate>[[current_date]]</creationDate>
-    <version>0.0.1</version>
+    <version>1.0.0</version>
     <description>MOD_SCOUTWAITINGCOUNT_DESCRIPTION</description>
     <languages folder="language">
         <language tag="en-GB">en-GB.mod_scoutwaitingcount.ini</language>
